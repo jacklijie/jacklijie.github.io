@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "欢迎使用 Jekyll!"
 date:   2016-07-02 17:05:33 +0800
 categories: jekyll update
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+这个文件放在 `_posts` 目录下面. 可以试着编辑下看看你的网站有什么改变. 编译网站有不同的方式, 但最常用的方式是使用命令 `jekyll serve`, 当你的页面内容发生改变的时候它会同步到网页里面.
 
 To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
 
