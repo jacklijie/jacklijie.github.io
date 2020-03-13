@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=Pragma content=no-cache><meta http-equiv=Cache-Control content=no-cache><meta http-equiv=Expires content=0><meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><title></title><script type=text/javascript>(function () {
+      var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+      var viewPort = function () {
+        var dpr, rem, scale;
+        var docEl = document.documentElement;
+        var fontEl = document.createElement('style');
+        var metaEl = document.querySelector('meta[name="viewport"]');
+        // dpr = window.devicePixelRatio || 1;
+        dpr = 1;
+        rem = (docEl.clientWidth > 500 ? 500 : docEl.clientWidth) * dpr / 20;
+        scale = 1 / dpr;
+        console.log(docEl.clientWidth);
+        // 设置viewport，进行缩放，达到高清效果
+        metaEl.setAttribute('content', 'width=' + docEl.clientWidth * dpr + ',initial-scale=' + scale +
+          ',maximum-scale=' + scale + ', minimum-scale=' + scale + ',user-scalable=no');
+        // 设置data-dpr属性，留作的css hack之用
+        docEl.setAttribute('data-dpr', dpr);
+        // 动态写入样式
+        docEl.firstElementChild.appendChild(fontEl);
+        fontEl.innerHTML = 'html{font-size:' + rem + 'px!important;}';
+        // 给js调用的，某一dpr下rem和px之间的转换函数
+        //rem转px
+        window.rem2px = function (v) {
+          v = parseFloat(v);
+          return v * rem;
+        };
+        //px转rem
+        window.px2rem = function (v) {
+          v = parseFloat(v);
+          return v / rem;
+        };
+        window.dpr = dpr;
+        window.rem = rem;
+      };
+      if (!document.addEventListener) return;
+      // window.addEventListener(resizeEvt, viewPort, false);
+      document.addEventListener('DOMContentLoaded', viewPort, false);
+    })();</script><link href=./css/app.c38a4d8a8c84fd7fd2eba7d9c64233d7.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=https://res.wx.qq.com/open/js/jweixin-1.0.0.js></script><script>//Android微信中，借助WeixinJSBridge对象来阻止字体大小调整
+    (function () {
+      if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+        handleFontSize();
+      } else {
+        if (document.addEventListener) {
+          document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+        } else if (document.attachEvent) {//IE浏览器，非W3C规范      
+          document.attachEvent("onWeixinJSBridgeReady", handleFontSize);
+        }
+      }
+      function handleFontSize() { // 设置网页字体为默认大小    
+        WeixinJSBridge.invoke('setFontSizeCallback', {
+          'fontSize': 0
+        }); // 重写设置网页字体大小的事件    
+        WeixinJSBridge.on('menu:setfont', function () {
+          WeixinJSBridge.invoke('setFontSizeCallback', {
+            'fontSize': 0
+          });
+        });
+      }
+    })();</script><script type=text/javascript src="./js/manifest.js?_=9473b96f8d2ba53c2ba0"></script><script type=text/javascript src="./js/vendor.js?_=ca51427d1d71c4a8d14b"></script><script type=text/javascript src="./js/app.js?_=d08060e248e526b01c5d"></script></body></html>
